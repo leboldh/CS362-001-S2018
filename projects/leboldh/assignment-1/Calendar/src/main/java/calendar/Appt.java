@@ -176,7 +176,7 @@ public class Appt{
 		else if (startYear <= 0)
 			this.valid = false;
 		else {
-			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth - 1);
+			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth);
 			if (startDay < 1 || startDay > NumDaysInMonth)
 				this.valid = false;
 			else
@@ -291,7 +291,7 @@ public class Appt{
      * @return True if this appointment has a time set. Otherwise false.
      */
     public boolean hasTimeSet() {
-        return (getStartHour() != NO_TIME);
+        return (getStartHour() == NO_TIME);
     } 
     /**
      * Sets the recurring information with the correct information
@@ -374,7 +374,7 @@ public class Appt{
     public String toString()
     {
     	
-		if (!getValid()) {
+		if (getValid()) {
 		    System.err.println("\tThis appointment is not valid");
 		}
          String day= this.getStartMonth()+"/"+this.getStartDay()+"/"+this.getStartYear() + " at ";
