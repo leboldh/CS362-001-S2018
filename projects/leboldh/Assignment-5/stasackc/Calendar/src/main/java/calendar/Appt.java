@@ -108,7 +108,7 @@ public class Appt{
     setStartHour(startHour);
 //Changed startMinute to startHour
 //The start minute of the appointment will always be set to the same number as the start hour, instead of the start minute that the user wanted.
-    setStartMinute(startHour);
+    setStartMinute(startMinute);
     setStartDay(startDay);
     setStartYear(startYear);
     setStartMonth(startMonth);
@@ -176,7 +176,7 @@ public class Appt{
 		else {
 //Change startMonth – 1 to startMonth
 //Any appointments in December would be invalid, and if the user entered a month as 0, it would be valid but it should not be.
-			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth);
+			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth-1);
 			if (startDay < 1 || startDay > NumDaysInMonth)
 				this.valid = false;
 			else
@@ -282,8 +282,8 @@ public class Appt{
 //Change &&’s in return statement to ||’s
 //If appointment starts on the at least one of the same day, month, OR year, the function will return true, instead of only returning true if the appointment has the same start day, month, AND year.
     public boolean isOn(int day, int month, int year) {
-        return (day == getStartDay() || month == getStartMonth()
-                || year == getStartYear());
+        return (day == getStartDay() && month == getStartMonth()
+                && year == getStartYear());
     }
 
     /**

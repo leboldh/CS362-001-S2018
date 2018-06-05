@@ -59,7 +59,7 @@ public class CalDay {
 		setDay(day);
 //Remove +1 from setMonth
 //Appointments will be one month earlier than they were supposed to be, and January may cause an error.
-		setMonth(month);
+		setMonth(month+1);
 		setYear(year);
 
 		setAppts(new LinkedList<Appt>());
